@@ -1,10 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { THEMES, ThemeManagerContext } from './ThemeManager'
 
 const STORAGE_KEY = 'theme'
 
 export const ThemeManagerProvider = ({ children }: { children: React.ReactNode }) => {
     const [activeTheme, storeActiveTheme] = useState<THEMES>(THEMES.LIGHT)
+
+    // Set the selected (or default) theme for the user
+    const setActiveTheme = (theme: THEMES) => {
+        document.querySelector('html')?.setAttribute('data-theme', theme);
+        storeActiveTheme(theme)
+    }
+
+    // Save the selected (or default) theme for a consistent experience
+    const saveActiveTheme = useCallback((theme: THEMES) => {
+        localStorage.setItem(STORAGE_KEY, theme)
+        setActiveTheme(theme)
+    }, [])
 
     // The default theme (in index.html) is set to light mode.
     // This useEffect will attempt to see if this is a returning visitor and maintain
@@ -25,19 +37,7 @@ export const ThemeManagerProvider = ({ children }: { children: React.ReactNode }
         if (!savedTheme) {
             saveActiveTheme(systemIsDarkMode ? THEMES.DARK : THEMES.LIGHT)
         }
-    }, [])
-
-    // Set the selected (or default) theme for the user
-    const setActiveTheme = (theme: THEMES) => {
-        document.querySelector('html')?.setAttribute('data-theme', theme);
-        storeActiveTheme(theme)
-    }
-
-    // Save the selected (or default) theme for a consistent experience
-    const saveActiveTheme = (theme: THEMES) => {
-        localStorage.setItem(STORAGE_KEY, theme)
-        setActiveTheme(theme)
-    }
+    }, [saveActiveTheme])
 
     return (
         <ThemeManagerContext.Provider
