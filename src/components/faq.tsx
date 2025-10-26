@@ -53,7 +53,9 @@ const FAQ = ({
                                         <DialogTitle className="text-base font-semibold text-base-content">
                                             What is going on here?
                                         </DialogTitle>
-                                        <h2 className="text-sm font-semibold pt-4 pb-1">
+                                    </div>
+                                    <div className="relative mt-6 flex-1 px-4 sm:px-6">
+                                        <h2 className="text-sm font-semibold pb-1">
                                             A digital character sheet
                                         </h2>
                                         <p className="text-sm">
@@ -82,12 +84,9 @@ const FAQ = ({
                                             <li className="text-sm pb-1">Upload your character data into the browser you'd like to use using the "upload" button below.</li>
                                         </ol>
                                         <div className="flex gap-2 pt-4">
-                                            <button onClick={handleDownload} className="btn btn-success">Download</button>
-                                            <button onClick={() => setConfirmAction(true)} className="btn btn-error">Upload</button>
+                                            <button onClick={handleDownload} className="btn btn-sm btn-success">Download</button>
+                                            <button onClick={() => setConfirmAction(true)} className="btn btn-sm btn-error">Upload</button>
                                         </div>
-                                    </div>
-                                    <div className="relative mt-6 flex-1 px-4 sm:px-6">
-                                        {/* Your content */}
                                     </div>
                                 </div>
                                 <TransitionChild>
@@ -99,18 +98,18 @@ const FAQ = ({
                                         >
                                             <span className="absolute -inset-2.5" />
                                             <span className="sr-only">Close panel</span>
-                                            <IconClose className="w-5 h-5 text-base-content" />
+                                            <IconClose className="w-4 h-4 text-base-content/75" />
                                             {/* <XMarkIcon aria-hidden="true" className="size-6" /> */}
                                         </button>
                                     </div>
                                 </TransitionChild>
+                                {confirmAction && (
+                                    <Alert handleConfirm={handleUpload} handleCancel={handleCancelUpload} />
+                                )}
                             </DialogPanel>
                         </div>
                     </div>
                 </div>
-                {confirmAction && (
-                    <Alert handleConfirm={handleUpload} handleCancel={handleCancelUpload} />
-                )}
             </Dialog>
         </>
     )
