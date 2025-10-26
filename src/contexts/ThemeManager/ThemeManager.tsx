@@ -10,6 +10,7 @@ export enum THEMES {
 }
 
 interface ThemeManagerContextType {
+    activeTheme: THEMES
     saveActiveTheme: (value: THEMES) => void;
 }
 
@@ -18,9 +19,9 @@ export const ThemeManagerContext = createContext<ThemeManagerContextType | null>
 export const useThemeManagerContext = () => {
     const context = useContext(ThemeManagerContext)
 
-    const { saveActiveTheme } = context || {}
+    const { activeTheme, saveActiveTheme } = context || {}
 
     return {
-        saveActiveTheme
+        activeTheme, saveActiveTheme
     }
 }
