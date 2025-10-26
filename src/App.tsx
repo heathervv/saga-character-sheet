@@ -3,6 +3,7 @@ import { ContentManagerProvider } from './contexts/ContentManager/Provider'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
+import Footer from './components/Footer'
 
 const App = () => {
   // Set theme to dark mode based on system settings
@@ -20,6 +21,7 @@ const App = () => {
           <Sidebar />
           <Content className="flex-1" />
         </div>
+        <Footer />
       </main>
     </ContentManagerProvider>
   )
