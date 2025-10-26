@@ -11,7 +11,7 @@ const App = () => {
       <ContentManagerProvider>
         <main className="bg-base-200 h-screen p-4">
           <Header />
-          <div className="flex gap-4">
+          <div className="flex flex-col lg:flex-row gap-4">
             <Sidebar />
             <Content className="flex-1" />
           </div>

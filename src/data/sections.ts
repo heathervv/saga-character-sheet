@@ -1,6 +1,7 @@
 import SectionOne from "../components/sections/SectionOne"
 import SectionTwo from "../components/sections/SectionTwo"
 import SectionThree from "../components/sections/SectionThree"
+import IconPlaceholder from "../assets/images/icon-placeholder"
 
 export enum SECTIONS {
     SECTION_ONE = 'section_one',
@@ -12,6 +13,12 @@ export const section_titles = {
     [SECTIONS.SECTION_ONE]: "Section one",
     [SECTIONS.SECTION_TWO]: "Section two",
     [SECTIONS.SECTION_THREE]: "Section three",
+}
+
+export const section_icons = {
+    [SECTIONS.SECTION_ONE]: IconPlaceholder,
+    [SECTIONS.SECTION_TWO]: IconPlaceholder,
+    [SECTIONS.SECTION_THREE]: IconPlaceholder,
 }
 
 export const section_components = {

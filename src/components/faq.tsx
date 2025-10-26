@@ -66,7 +66,7 @@ const FAQ = ({
                                             me (<span className="italic">@heathervv</span>) or email me (
                                             <span className="italic">heathervandervecht@gmail.com</span>).
                                         </p>
-                                        <hr className="mt-4 border-base-content" />
+                                        <hr className="mt-4 border-base-content/10" />
                                         <h2 className="text-sm font-semibold pt-4 pb-1">
                                             How it works
                                         </h2>
