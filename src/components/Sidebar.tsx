@@ -1,6 +1,6 @@
 import { useContentManagerContext } from '../contexts/ContentManager/ContentManager'
 import { SECTIONS, section_titles } from '../data/sections'
-import { IconPlaceholder } from '../assets/images/icon-placeholder'
+import IconPlaceholder from '../assets/images/icon-placeholder'
 
 import Card from './Card'
 
