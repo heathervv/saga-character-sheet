@@ -2,7 +2,6 @@ import SectionOne from "../components/sections/SectionOne"
 import SectionTwo from "../components/sections/SectionTwo"
 import SectionThree from "../components/sections/SectionThree"
 
-// @ts-expect-error ENUMS are life and I won't stop using them, Typescript.
 export enum SECTIONS {
     SECTION_ONE = 'section_one',
     SECTION_TWO = 'section_two',

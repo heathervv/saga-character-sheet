@@ -3,7 +3,6 @@ import {
     useContext,
 } from 'react'
 
-// @ts-expect-error ENUMS are life and I won't stop using them, Typescript.
 export enum THEMES {
     LIGHT = 'pastel',
     DARK = 'dracula'
