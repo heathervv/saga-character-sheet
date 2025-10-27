@@ -30,7 +30,7 @@ const Header = () => {
                     target="_blank"
                 >
                     Rules
-                    <IconExternal className="pl-1 w-5 h-5 text-info" />
+                    <IconExternal className="pl-1 w-5 h-5 text-base-content" />
                 </a>
             </div>
         </header>
