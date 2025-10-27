@@ -7,6 +7,9 @@ import { SECTIONS } from '../../data/sections';
 interface ContentManagerContextType {
     activeSection: SECTIONS;
     setActiveSection: (value: SECTIONS) => void;
+    order: SECTIONS[];
+    setOrder: (order: SECTIONS[]) => void;
+    saveLatestOrder: (order: SECTIONS[]) => void;
 }
 
 export const ContentManagerContext = createContext<ContentManagerContextType | null>(null)
@@ -14,9 +17,15 @@ export const ContentManagerContext = createContext<ContentManagerContextType | n
 export const useContentManagerContext = () => {
     const context = useContext(ContentManagerContext)
 
-    const { activeSection, setActiveSection } = context || {}
+    const {
+        activeSection,
+        setActiveSection,
+        order,
+        setOrder,
+        saveLatestOrder
+    } = context || {}
 
     return {
-        activeSection, setActiveSection
+        activeSection, setActiveSection, order, setOrder, saveLatestOrder
     }
 }
