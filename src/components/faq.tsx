@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
+import type { ChangeEvent } from "react"
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react'
 import IconClose from '../assets/images/icon-close'
 import Alert from './Alert'
+import { exportToJson } from '../data/storageHelpers'
 
 const FAQ = ({
     isOpen,
@@ -18,12 +20,50 @@ const FAQ = ({
     }
 
     const handleDownload = () => {
-        console.log('download data + show success/error toast')
+        const localStorageData = { ...localStorage }
+        delete localStorageData.theme
+
+        exportToJson(localStorageData, "legacy-saga-character-sheet-data")
     }
 
-    const handleUpload = () => {
-        console.log('upload data + show success/error toast')
-    }
+    const handleUpload = useCallback(
+        (event: ChangeEvent<HTMLInputElement>) => {
+            const file = event.target.files?.[0]
+
+            if (!file) {
+                setConfirmAction(false)
+                return
+            }
+
+            const fileReader = new FileReader()
+            fileReader.readAsText(file, "UTF-8")
+            fileReader.onload = (e) => {
+                const content = e.target?.result
+
+                if (typeof content !== "string") {
+                    return
+                }
+
+                const fileData = JSON.parse(content)
+                const existingTheme = localStorage.getItem("theme")
+
+                localStorage.clear()
+
+                // Keep existing theme if it was specified.
+                if (existingTheme) {
+                    localStorage.setItem("theme", existingTheme)
+                }
+
+                Object.entries(fileData).forEach(([key, value]) => {
+                    localStorage.setItem(key, value as string)
+                })
+
+                event.target.value = ""
+            }
+            setConfirmAction(false)
+        },
+        []
+    )
 
     const handleCancelUpload = () => {
         setConfirmAction(false)
@@ -60,10 +100,8 @@ const FAQ = ({
                                         </h2>
                                         <p className="text-sm">
                                             This website allows you to manage your character sheet for
-                                            Legacy & Saga games. It strives to support all the rules and
-                                            possible configurations for any given character trait you
-                                            want, but it is definitely a work in progress. If there is a
-                                            feature or element you would like to see here that is not yet
+                                            Legacy & Saga games. It is entirely baised and is improved upon where possible.
+                                            If there is a feature or element you would like to see here that is not yet
                                             supported, if you are in the ToaSE discord server you can DM
                                             me (<span className="italic">@heathervv</span>) or email me (
                                             <span className="italic">heathervandervecht@gmail.com</span>).
