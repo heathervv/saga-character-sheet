@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import Card from './Card'
+import Footer from './Footer'
 import IconArrow from '../assets/images/icon-arrow'
 import IconArrange from '../assets/images/icon-arrange'
 import IconHamburger from '../assets/images/icon-hamburger'
@@ -97,47 +98,52 @@ const Sidebar = () => {
     }
 
     return (
-        <Card className="lg:w-3xs">
-            <>
-                <button
-                    id="dropdownBtn"
-                    className="cursor-pointer lg:hidden font-medium rounded-lg text-sm px-1 flex items-center"
-                    type="button"
-                    onClick={handleDropdownClick}
-                >
-                    <span className="flex flex-1 text-left">
-                        <Icon className="pr-1 w-5 h-5 text-info" />
-                        {section_titles[activeSection as SECTIONS]}
-                    </span>
-                    <IconArrow className={`w-2.5 h-2.5 ms-3 ${dropdownIsOpen ? 'rotate-180' : ''}`} />
-                </button>
-                <hr className={`my-2 border-base-content/10 lg:hidden ${!dropdownIsOpen ? 'hidden' : ''}`} />
-                <div id="dropdown" className={`${!dropdownIsOpen ? 'hidden' : ''} lg:block`}>
-                    <ul className="flex flex-col gap-y-2" aria-labelledby="dropdownBtn">
-                        {(order || []).map((section, i) => (
-                            <Item
-                                key={section}
-                                section={section as SECTIONS}
-                                copy={section_titles[section as SECTIONS]}
-                                isActive={activeSection === section}
-                                handleClick={handleSectionClick}
-                                editable={editable}
-                                handleDragStart={() => handleDragStart(i)}
-                                handleDragEnter={() => handleDragEnter(i)}
-                                handleDragEnd={handleSort}
-                            />
-                        ))}
-                    </ul>
-                    <hr className="mt-2 border-base-content/10" />
-                    <button onClick={handleReorder} className="cursor-pointer flex w-full text-sm items-center p-2">
-                        <IconArrange className="w-6 h-6 mr-1 text-base-content/50" />
-                        <span className="block flex-1 text-left text-base-content/50 italic">
-                            {editable ? 'Confirm order' : 'Reorder sections'}
+        <div className="lg:w-3xs">
+            <Card>
+                <>
+                    <button
+                        id="dropdownBtn"
+                        className="cursor-pointer lg:hidden font-medium rounded-lg text-sm px-1 flex items-center"
+                        type="button"
+                        onClick={handleDropdownClick}
+                    >
+                        <span className="flex flex-1 text-left">
+                            <Icon className="pr-1 w-5 h-5 text-info" />
+                            {section_titles[activeSection as SECTIONS]}
                         </span>
+                        <IconArrow className={`w-2.5 h-2.5 ms-3 ${dropdownIsOpen ? 'rotate-180' : ''}`} />
                     </button>
-                </div>
-            </>
-        </Card>
+                    <hr className={`my-2 border-base-content/10 lg:hidden ${!dropdownIsOpen ? 'hidden' : ''}`} />
+                    <div id="dropdown" className={`${!dropdownIsOpen ? 'hidden' : ''} lg:block`}>
+                        <ul className="flex flex-col gap-y-2" aria-labelledby="dropdownBtn">
+                            {(order || []).map((section, i) => (
+                                <Item
+                                    key={section}
+                                    section={section as SECTIONS}
+                                    copy={section_titles[section as SECTIONS]}
+                                    isActive={activeSection === section}
+                                    handleClick={handleSectionClick}
+                                    editable={editable}
+                                    handleDragStart={() => handleDragStart(i)}
+                                    handleDragEnter={() => handleDragEnter(i)}
+                                    handleDragEnd={handleSort}
+                                />
+                            ))}
+                        </ul>
+                        <hr className="mt-2 border-base-content/10" />
+                        <button onClick={handleReorder} className="cursor-pointer flex w-full text-sm items-center p-2">
+                            <IconArrange className="w-6 h-6 mr-1 text-base-content/50" />
+                            <span className="block flex-1 text-left text-base-content/50 italic">
+                                {editable ? 'Confirm order' : 'Reorder sections'}
+                            </span>
+                        </button>
+                    </div>
+                </>
+            </Card>
+            <div className="hidden lg:block">
+                <Footer />
+            </div>
+        </div>
     )
 }
 

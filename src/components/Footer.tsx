@@ -10,8 +10,8 @@ const Footer = () => {
 
     return (
         <>
-            <footer className="absolute bottom-0 left-0 w-screen p-4 flex justify-center">
-                <button className="btn btn-sm btn-primary" onClick={() => handleClick()}>What is going on here?</button>
+            <footer className="p-4 flex justify-center">
+                <button className="btn btn-sm btn-neutral" onClick={() => handleClick()}>What is going on here?</button>
             </footer>
             <FAQ isOpen={isOpen} handleOpen={handleClick} />
         </>
