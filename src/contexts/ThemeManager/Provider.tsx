@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { THEMES, ThemeManagerContext } from './ThemeManager'
+import { THEMES, THEME_NAMES, ThemeManagerContext } from './ThemeManager'
 
 const STORAGE_KEY = 'theme'
 
@@ -8,7 +8,7 @@ export const ThemeManagerProvider = ({ children }: { children: React.ReactNode }
 
     // Set the selected (or default) theme for the user
     const setActiveTheme = (theme: THEMES) => {
-        document.querySelector('html')?.setAttribute('data-theme', theme);
+        document.querySelector('html')?.setAttribute('data-theme', THEME_NAMES[theme]);
         storeActiveTheme(theme)
     }
 

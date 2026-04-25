@@ -4,8 +4,13 @@ import {
 } from 'react'
 
 export enum THEMES {
-    LIGHT = 'pastel',
-    DARK = 'dracula'
+    LIGHT = 'light',
+    DARK = 'dark',
+}
+
+export const THEME_NAMES = {
+    [THEMES.LIGHT]: 'pastel',
+    [THEMES.DARK]: 'dracula',
 }
 
 interface ThemeManagerContextType {
