@@ -100,11 +100,11 @@ const FAQ = ({
                                         </h2>
                                         <p className="text-sm">
                                             This website allows you to manage your character sheet for
-                                            Legacy & Saga games. It is entirely baised and is improved upon where possible.
-                                            If there is a feature or element you would like to see here that is not yet
-                                            supported, if you are in the ToaSE discord server you can DM
-                                            me (<span className="italic">@heathervv</span>) or email me (
-                                            <span className="italic">heathervandervecht@gmail.com</span>).
+                                            Legacy & Saga games. It is entirely biased with the goal of supporting all
+                                            features and rules as I learn them. Feel free to reach out about any features
+                                            or elements you want to see here. <span className="italic">@heathervv </span>
+                                            in the ToaSE discord server or email me at
+                                            <span className="italic"> heathervandervecht@gmail.com</span>.
                                         </p>
                                         <hr className="mt-4 border-base-content/10" />
                                         <h2 className="text-sm font-semibold pt-4 pb-1">
