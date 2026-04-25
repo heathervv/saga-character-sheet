@@ -13,7 +13,7 @@ const App = () => {
           <Header />
           <div className="flex flex-col lg:flex-row gap-4">
             <Sidebar />
-            <Content className="flex-1" />
+            <Content className="flex-1 p-4" />
           </div>
           <Footer />
         </main>
