@@ -15,7 +15,7 @@ export enum SECTIONS {
 }
 
 export const section_titles = {
-    [SECTIONS.CHARACTER]: "Character",
+    [SECTIONS.CHARACTER]: "Character / Party",
     [SECTIONS.SOCIAL_SKILLS]: "Social Skills",
     [SECTIONS.PHYSICAL_SKILLS]: "Physical Skills",
     [SECTIONS.MAGIC_SKILLS]: "Magic Skills",

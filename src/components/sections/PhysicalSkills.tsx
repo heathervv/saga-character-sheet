@@ -1,5 +1,5 @@
 const SectionTwo = () => (
-    <p className="text-sm">(section two) This is where the actual content will live once I know what it actually looks like</p>
+    <p className="text-sm">Come back soon!</p>
 )
 
 export default SectionTwo
