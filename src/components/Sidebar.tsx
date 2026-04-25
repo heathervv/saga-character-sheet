@@ -98,7 +98,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="lg:w-3xs">
+        <div className="lg:w-1/6">
             <Card>
                 <>
                     <button

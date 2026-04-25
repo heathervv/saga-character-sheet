@@ -9,7 +9,7 @@ const Content = ({ className }: { className?: string }) => {
     const ActiveSectionComponent = section_components[activeSection || SECTIONS.SECTION_ONE]
 
     return (
-        <div>
+        <div className="lg:w-5/6">
             <Card className={className}>
                 <ActiveSectionComponent />
             </Card>
