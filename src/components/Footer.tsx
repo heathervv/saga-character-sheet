@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import FAQ from './faq'
+import FAQ from './content/FAQ'
 
 const Footer = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false)

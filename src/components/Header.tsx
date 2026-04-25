@@ -1,5 +1,5 @@
 import { THEMES, useThemeManagerContext } from "../contexts/ThemeManager/ThemeManager"
-import Toggle from './Toggle'
+import Toggle from './elements/Toggle'
 import IconExternal from '../assets/images/icon-external'
 import IconSun from '../assets/images/icon-sun'
 import IconMoon from '../assets/images/icon-moon'

@@ -1,6 +1,6 @@
 import { useContentManagerContext } from '../contexts/ContentManager/ContentManager'
 import { SECTIONS, section_components } from '../data/sections'
-import Card from '../components/Card'
+import Card from './elements/Card'
 import Footer from '../components/Footer'
 
 const Content = ({ className }: { className?: string }) => {

@@ -35,7 +35,7 @@ const Skill = ({ id, name, subtitle }: { id: string; name: string; subtitle?: st
         <div className="flex flex-row items-center gap-4">
             <div>
                 <div className="flex flex-row">
-                    <p className="font-bold mr-2 w-20">{name}</p>
+                    <p className="font-bold mr-2 w-30">{name}</p>
                     <div className="flex flex-row">
                         <p className="font-bold mr-2">{value}</p>
                         <input type="range" min="0" max="5" name={id} value={value} onChange={onValueChange} className="range range-sm" />

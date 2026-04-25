@@ -27,7 +27,6 @@ const Character = () => (
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section>
-            <p className="mb-2 text-lg inline-block">Encounters</p>
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                 <div className="flex flex-col grow gap-2">
                     <Number id={`${BASE_KEY}hp_current`} label="Current HP" />
@@ -44,16 +43,10 @@ const Character = () => (
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section>
-            <WithTooltip
-                direction="right"
-                text="Can be expended to allow a reroll and added before or after the result. Your pool replenishes on a week's rest."
-            >
-                <p className="mb-2 text-lg inline-block">Edge</p>
-            </WithTooltip>
             <div className="flex flex-col gap-2 sm:flex-row">
                 <Text id={`${BASE_KEY}edge_dice`} label="Edge Dice" />
                 <Number id={`${BASE_KEY}edge_die_pool`} label="Total available dice" />
-                <Number id={`${BASE_KEY}edge_die_used`} label="Dice Used" />
+                <Number id={`${BASE_KEY}edge_die_used`} label="Dice Used" tooltip="Can be used to allow a reroll and added before or after the result. Your pool replenishes on a week's rest." />
             </div>
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />

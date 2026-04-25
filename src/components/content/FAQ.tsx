@@ -1,9 +1,9 @@
 import { useState, useCallback } from 'react'
 import type { ChangeEvent } from "react"
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react'
-import IconClose from '../assets/images/icon-close'
+import IconClose from '../../assets/images/icon-close'
 import Alert from './Alert'
-import { exportToJson } from '../data/storageHelpers'
+import { exportToJson } from '../../data/storageHelpers'
 
 const FAQ = ({
     isOpen,

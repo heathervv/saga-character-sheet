@@ -49,7 +49,7 @@ const Dice = ({ id }: { id: string }) => {
 
     return (
         <section>
-            <fieldset className="flex flex-row gap-2">
+            <fieldset className="flex flex-row gap-4">
                 <label htmlFor={`${id}_${DICE.D4}`} className={`text-center ${value === DICE.D4 ? "text-accent" : ""}`}>
                     <IconD4 className="w-8 h-8" />
                     <input

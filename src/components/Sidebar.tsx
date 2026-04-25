@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react'
-import Card from './Card'
+import Card from './elements/Card'
 import Footer from './Footer'
 import IconArrow from '../assets/images/icon-arrow'
 import IconArrange from '../assets/images/icon-arrange'
