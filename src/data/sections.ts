@@ -1,28 +1,36 @@
-import SectionOne from "../components/sections/SectionOne"
-import SectionTwo from "../components/sections/SectionTwo"
-import SectionThree from "../components/sections/SectionThree"
-import IconPlaceholder from "../assets/images/icon-placeholder"
+import Character from "../components/sections/Character"
+import SocialSkills from "../components/sections/SocialSkills"
+import PhysicalSkills from "../components/sections/PhysicalSkills"
+import MagicSkills from "../components/sections/MagicSkills"
+import IconMagic from "../assets/images/icon-magic"
+import IconPhysical from "../assets/images/icon-physical"
+import IconSocial from "../assets/images/icon-social"
+import IconCharacter from "../assets/images/icon-character"
 
 export enum SECTIONS {
-    SECTION_ONE = 'section_one',
-    SECTION_TWO = 'section_two',
-    SECTION_THREE = 'section_three',
+    CHARACTER = 'character',
+    SOCIAL_SKILLS = 'social_skills',
+    PHYSICAL_SKILLS = 'physical_skills',
+    MAGIC_SKILLS = 'magic_skills',
 }
 
 export const section_titles = {
-    [SECTIONS.SECTION_ONE]: "Section one",
-    [SECTIONS.SECTION_TWO]: "Section two",
-    [SECTIONS.SECTION_THREE]: "Section three",
+    [SECTIONS.CHARACTER]: "Character",
+    [SECTIONS.SOCIAL_SKILLS]: "Social Skills",
+    [SECTIONS.PHYSICAL_SKILLS]: "Physical Skills",
+    [SECTIONS.MAGIC_SKILLS]: "Magic Skills",
 }
 
 export const section_icons = {
-    [SECTIONS.SECTION_ONE]: IconPlaceholder,
-    [SECTIONS.SECTION_TWO]: IconPlaceholder,
-    [SECTIONS.SECTION_THREE]: IconPlaceholder,
+    [SECTIONS.CHARACTER]: IconCharacter,
+    [SECTIONS.SOCIAL_SKILLS]: IconSocial,
+    [SECTIONS.PHYSICAL_SKILLS]: IconPhysical,
+    [SECTIONS.MAGIC_SKILLS]: IconMagic,
 }
 
 export const section_components = {
-    [SECTIONS.SECTION_ONE]: SectionOne,
-    [SECTIONS.SECTION_TWO]: SectionTwo,
-    [SECTIONS.SECTION_THREE]: SectionThree,
+    [SECTIONS.CHARACTER]: Character,
+    [SECTIONS.SOCIAL_SKILLS]: SocialSkills,
+    [SECTIONS.PHYSICAL_SKILLS]: PhysicalSkills,
+    [SECTIONS.MAGIC_SKILLS]: MagicSkills,
 }
