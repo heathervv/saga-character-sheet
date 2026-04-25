@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react'
+import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
 import { getData, saveData } from '../../data/storageHelpers'
 import WithTooltip from './WithTooltip'
 
 const Checkbox = ({ id, label, tooltip }: { id: string; label: string; tooltip?: string }) => {
+    const { selectedCharacterId } = useContentManagerContext()
     const [value, setValue] = useState<boolean>(false)
 
     useEffect(() => {
-        const data = getData<boolean>(id)
+        const data = getData<boolean>(id, selectedCharacterId)
 
         setValue(data || false)
-    }, [])
+    }, [selectedCharacterId])
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.checked
         setValue(newValue)
-        saveData<boolean>(id, newValue)
+        saveData<boolean>(id, newValue, selectedCharacterId)
     }
 
     return (

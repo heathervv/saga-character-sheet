@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react'
+import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
 import { getData, saveData } from '../../data/storageHelpers'
 import WithTooltip from './WithTooltip'
 
 const Number = ({ id, label, tooltip }: { id: string; label: string; tooltip?: string }) => {
+    const { selectedCharacterId } = useContentManagerContext()
     const [value, setValue] = useState<number | ''>('')
 
     useEffect(() => {
-        const data = getData<number>(id)
+        const data = getData<number>(id, selectedCharacterId)
 
         setValue(data || '')
-    }, [])
+    }, [selectedCharacterId])
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value
         const parsedValue = parseInt(newValue, 10)
         setValue(isNaN(parsedValue) ? '' : parsedValue)
-        saveData<number>(id, parsedValue)
+        saveData<number>(id, parsedValue, selectedCharacterId)
     }
 
     return (
