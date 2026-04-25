@@ -23,12 +23,12 @@ const Text = ({ id, label, tooltip }: { id: string; label: string; tooltip?: str
         <div className="block">
             {tooltip ? (
                 <WithTooltip text={tooltip}>
-                    <label className="mb-1 inline-block text-sm" htmlFor={id}>{label}:</label>
+                    <label className="mb-1 text-sm" htmlFor={id}>{label}:</label>
                 </WithTooltip>
             ) : (
                 <label className="mb-1 block text-sm" htmlFor={id}>{label}:</label>
             )}
-            <input className="input input-md" id={id} type="text" value={value} onChange={onChange} />
+            <input className="input input-md w-full" id={id} type="text" value={value} onChange={onChange} />
         </div>
     )
 }

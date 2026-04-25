@@ -8,7 +8,7 @@ export const LabelWithTooltip = ({ children, text, direction = "top" }: { childr
             <div className={`tooltip tooltip-neutral tooltip-${direction} pl-0.5`} data-tip={text}>
                 <IconQuestion className="w-4 h-4" />
             </div>
-        </div >
+        </div>
     )
 }
 

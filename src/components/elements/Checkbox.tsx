@@ -23,7 +23,7 @@ const Checkbox = ({ id, label, tooltip }: { id: string; label: string; tooltip?:
         <div className="block">
             {tooltip ? (
                 <WithTooltip text={tooltip}>
-                    <label className="mb-1 inline-block text-sm" htmlFor={id}>{label}:</label>
+                    <label className="mb-1 text-sm" htmlFor={id}>{label}:</label>
                 </WithTooltip>
             ) : (
                 <label className="mb-1 block text-sm" htmlFor={id}>{label}:</label>
