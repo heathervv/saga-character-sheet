@@ -21,7 +21,7 @@ const Number = ({ id, label, tooltip }: { id: string; label: string; tooltip?: s
     }
 
     return (
-        <div className="block">
+        <div className="block grow">
             {tooltip ? (
                 <WithTooltip text={tooltip}>
                     <label className="mb-1 text-sm" htmlFor={id}>{label}:</label>

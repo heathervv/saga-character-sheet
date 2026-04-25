@@ -10,13 +10,13 @@ const BASE_KEY = 'character_'
 
 const Character = () => (
     <section>
-        <section className="columns-3">
+        <section className="flex flex-col gap-2 md:flex-row">
             <Text id={`${BASE_KEY}name`} label="Name" />
             <Text id={`${BASE_KEY}race`} label="Race" />
             <Number id={`${BASE_KEY}tier`} label="Tier" />
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
-        <section className="columns-3">
+        <section className="flex gap-2 flex-row">
             <Number id={`${BASE_KEY}momentum`} label="Momentum" />
             <Number id={`${BASE_KEY}burden`} label="Burden" />
             <Checkbox
@@ -28,7 +28,7 @@ const Character = () => (
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section>
             <p className="mb-2 text-lg inline-block">Encounters</p>
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                 <div className="flex flex-col grow gap-2">
                     <Number id={`${BASE_KEY}hp_current`} label="Current HP" />
                     <Text id={`${BASE_KEY}hp_max`} label="Max HP" />
@@ -50,19 +50,19 @@ const Character = () => (
             >
                 <p className="mb-2 text-lg inline-block">Edge</p>
             </WithTooltip>
-            <div className="columns-3">
+            <div className="flex flex-col gap-2 sm:flex-row">
                 <Text id={`${BASE_KEY}edge_dice`} label="Edge Dice" />
                 <Number id={`${BASE_KEY}edge_die_pool`} label="Total available dice" />
                 <Number id={`${BASE_KEY}edge_die_used`} label="Dice Used" />
             </div>
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
-        <section className="flex flex-col gap-4">
-            <div className="columns-2">
+        <section className="flex flex-col gap-2 lg:gap-4">
+            <div className="flex flex-col gap-2 lg:gap-4 lg:block lg:columns-2">
                 <TextArea id={`${BASE_KEY}grief`} label="Grief" />
                 <TextArea id={`${BASE_KEY}injuries`} label="Injuries" />
             </div>
-            <div className="columns-2">
+            <div className="flex flex-col gap-2 lg:gap-4 lg:block lg:columns-2">
                 <TextArea
                     id={`${BASE_KEY}rapport`}
                     label="Rapport"

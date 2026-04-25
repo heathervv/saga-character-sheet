@@ -5,7 +5,7 @@ export const LabelWithTooltip = ({ children, text, direction = "top" }: { childr
     return (
         <div>
             {children}
-            <div className={`tooltip tooltip-neutral tooltip-${direction} pl-0.5`} data-tip={text}>
+            <div className={`hidden md:inline-block tooltip tooltip-neutral tooltip-${direction} pl-0.5`} data-tip={text}>
                 <IconQuestion className="w-4 h-4" />
             </div>
         </div>

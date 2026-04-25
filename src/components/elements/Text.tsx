@@ -20,7 +20,7 @@ const Text = ({ id, label, tooltip }: { id: string; label: string; tooltip?: str
     }
 
     return (
-        <div className="block">
+        <div className="block grow">
             {tooltip ? (
                 <WithTooltip text={tooltip}>
                     <label className="mb-1 text-sm" htmlFor={id}>{label}:</label>
