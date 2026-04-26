@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 const Content = ({ className }: { className?: string }) => {
     const { activeSection } = useContentManagerContext()
 
-    const ActiveSectionComponent = section_components[activeSection || SECTIONS.SECTION_ONE]
+    const ActiveSectionComponent = section_components[activeSection || SECTIONS.CHARACTER]
 
     return (
         <div className="lg:w-5/6">
