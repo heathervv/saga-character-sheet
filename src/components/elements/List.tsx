@@ -33,6 +33,28 @@ const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: b
         setOpenIndex(openIndex === index ? -1 : index)
     }
 
+    const handleSummaryClick = (index: number, e: React.MouseEvent<HTMLElement>) => {
+        // Because there are interactive elements within the summary, we need to check if
+        // the click is coming from an interactive child element and prevent the toggle if so.
+        const target = e.target as HTMLElement
+        const activeElement = document.activeElement as HTMLElement | null
+        const clickedInteractiveChild = !!target.closest('input, textarea, select, button, a, [role="button"]')
+        const keyboardClickFromFocusedChild = e.detail === 0 && !!activeElement && e.currentTarget.contains(activeElement)
+
+        // The event is from typing in the input, actively supress it AND skip toggle behaviour
+        if (keyboardClickFromFocusedChild) {
+            e.preventDefault()
+            return
+        }
+
+        // Event is from an interactive child, skip toggle behaviour
+        if (clickedInteractiveChild) {
+            return
+        }
+
+        handleToggle(index)
+    }
+
     const handleNameChange = (index: number, newName: string) => {
         const newItems = [...items]
         newItems[index].name = newName
@@ -59,20 +81,43 @@ const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: b
             <div className="flex flex-col gap-1">
                 {items.map((item, index) => (
                     <details key={`${id}-${index}`} className="collapse bg-base-100 border border-base-content/30" name={`accordion-${id}`}>
-                        <summary className="collapse-title text-sm py-2 px-4" onClick={() => handleToggle(index)}>
+                        <summary
+                            className="collapse-title text-sm py-2 px-4"
+                            onClick={(e) => handleSummaryClick(index, e)}
+                        >
                             <div className="flex flex-row justify-between items-center">
                                 <div className="grow">
                                     {toggleAscendDice && (
-                                        <input type="checkbox" className="checkbox checkbox-xs mr-2" checked={item.ascendDice || false} onChange={() => handleAscendDiceToggle(index)} />
+                                        <input
+                                            type="checkbox"
+                                            className="checkbox checkbox-xs mr-2"
+                                            checked={item.ascendDice || false}
+                                            onChange={() => handleAscendDiceToggle(index)}
+                                        />
                                     )}
-                                    <input type="text" className={`input input-xs inline-block ${full ? 'w-1/3 lg:w-3/4' : 'w-1/3'}`} placeholder="Add new skill here..." value={item.name} onChange={(e) => handleNameChange(index, e.target.value)} />
+                                    <input
+                                        type="text"
+                                        className={`input input-xs inline-block ${full ? 'w-1/3 lg:w-3/4' : 'w-1/3'}`}
+                                        placeholder="Add new skill here..."
+                                        value={item.name}
+                                        onChange={(e) => handleNameChange(index, e.target.value)}
+                                    />
                                 </div>
                                 <p>{openIndex === index ? '-' : '+'}</p>
                             </div>
                         </summary>
                         <div className="collapse-content pt-0 pb-2 px-4">
-                            <textarea className="textarea textarea-xs w-full" value={item.notes} onChange={(e) => handleNotesChange(index, e.target.value)} />
-                            <button className="btn btn-xs btn-error mt-2" onClick={() => handleRemove(index)}>Remove skill</button>
+                            <textarea
+                                className="textarea textarea-xs w-full"
+                                value={item.notes}
+                                onChange={(e) => handleNotesChange(index, e.target.value)}
+                            />
+                            <button
+                                className="btn btn-xs btn-error mt-2"
+                                onClick={() => handleRemove(index)}
+                            >
+                                Remove skill
+                            </button>
                         </div>
                     </details>
                 ))}
