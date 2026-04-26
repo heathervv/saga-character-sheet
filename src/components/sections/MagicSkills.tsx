@@ -11,15 +11,15 @@ const MagicSkills = () => (
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section>
             <p className="text-lg font-bold mb-2">Magic Dice</p>
-            <div className="flex flex-row items-center gap-4">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4">
                 <div className="lg:mr-4">
                     <Dice id={`${BASE_KEY}dice`} />
                 </div>
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col md:flex-row lg:flex-col flex-1 gap-2">
                     <Number id={`${BASE_KEY}available_dice`} label="Available Dice" />
                     <Number id={`${BASE_KEY}total_die_pool`} label="Total Die Pool" />
                 </div>
-                <div className="flex flex-col flex-1">
+                <div className="flex flex-col md:flex-row lg:flex-col flex-1 gap-2">
                     <Number id={`${BASE_KEY}bonus_dice`} label="Bonus Dice" />
                     <Number
                         id={`${BASE_KEY}overload`}
@@ -30,12 +30,12 @@ const MagicSkills = () => (
             </div>
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
-        <section className="flex flex-row">
-            <div className="w-2/3 pr-6">
+        <section className="flex flex-col lg:flex-row">
+            <div className="lg:w-2/3 lg:pr-6">
                 <p className="text-lg font-bold mb-2">Magic Spells</p>
                 <List id={`${BASE_KEY}spells`} />
             </div>
-            <div className="w-1/3 pl-6 border-l border-base-content/10">
+            <div className="pt-4 lg:pt-0 lg:w-1/3 lg:pl-6 lg:border-l lg:border-base-content/10">
                 <p className="text-lg font-bold mb-2">Magic Lines</p>
                 <List id={`${BASE_KEY}lines`} full />
             </div>
@@ -46,12 +46,12 @@ const MagicSkills = () => (
             <List id={`${BASE_KEY}spell_combos`} />
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
-        <section className="flex flex-row">
-            <div className="flex-1 pr-6">
+        <section className="flex flex-col lg:flex-row">
+            <div className="flex-1 lg:pr-6">
                 <p className="text-lg font-bold mb-2">Origins</p>
                 <List id={`${BASE_KEY}origins`} />
             </div>
-            <div className="flex-1 pl-6 border-l border-base-content/10">
+            <div className="pt-4 lg:pt-0 flex-1 lg:pl-6 lg:border-l lg:border-base-content/10">
                 <p className="text-lg font-bold mb-2">Weapon Skills</p>
                 <List id={`${BASE_KEY}weapon_skills`} />
             </div>

@@ -22,7 +22,7 @@ const PhysicalSkills = () => {
                     <SkillRoll />
                 </div>
             </section>
-            <section className="flex flex-col">
+            <section className="flex flex-col pt-4 md:pt-0">
                 <WithTooltip text="Checked skills will use ascended dice when rolling.">
                     <p className="text-lg font-bold inline-block mb-2">Skills & Abilities</p>
                 </WithTooltip>

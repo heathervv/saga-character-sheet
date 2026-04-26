@@ -32,7 +32,7 @@ const Skill = ({ id, name, subtitle }: { id: string; name: string; subtitle?: st
     }
 
     return (
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 py-2 sm:py-0">
             <div>
                 <div className="flex flex-row">
                     <p className="font-bold mr-2 w-30">{name}</p>

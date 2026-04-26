@@ -65,7 +65,7 @@ const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: b
                                     {toggleAscendDice && (
                                         <input type="checkbox" className="checkbox checkbox-xs mr-2" checked={item.ascendDice || false} onChange={() => handleAscendDiceToggle(index)} />
                                     )}
-                                    <input type="text" className={`input input-xs inline-block ${full ? 'w-3/4' : 'w-1/3'}`} placeholder="Add new skill here..." value={item.name} onChange={(e) => handleNameChange(index, e.target.value)} />
+                                    <input type="text" className={`input input-xs inline-block ${full ? 'w-1/3 lg:w-3/4' : 'w-1/3'}`} placeholder="Add new skill here..." value={item.name} onChange={(e) => handleNameChange(index, e.target.value)} />
                                 </div>
                                 <p>{openIndex === index ? '-' : '+'}</p>
                             </div>
