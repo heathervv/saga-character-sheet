@@ -108,7 +108,7 @@ const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: b
                         </summary>
                         <div className="collapse-content pt-0 pb-2 px-4">
                             <textarea
-                                className="textarea textarea-xs w-full"
+                                className="textarea textarea-xs w-full field-sizing-content"
                                 value={item.notes}
                                 onChange={(e) => handleNotesChange(index, e.target.value)}
                             />

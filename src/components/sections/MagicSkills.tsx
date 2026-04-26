@@ -16,7 +16,11 @@ const MagicSkills = () => (
                     <Dice id={`${BASE_KEY}dice`} />
                 </div>
                 <div className="flex flex-col md:flex-row lg:flex-col flex-1 gap-2">
-                    <Number id={`${BASE_KEY}available_dice`} label="Available Dice" />
+                    <Number
+                        id={`${BASE_KEY}available_dice`}
+                        label="Available Dice"
+                        tooltip="Dice that are half or lower are removed from the pool, requiring a week's rest to replenish. This is ignored with a nat 20."
+                    />
                     <Number id={`${BASE_KEY}total_die_pool`} label="Total Die Pool" />
                 </div>
                 <div className="flex flex-col md:flex-row lg:flex-col flex-1 gap-2">
