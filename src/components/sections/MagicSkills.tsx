@@ -1,5 +1,63 @@
+import Dice from "../elements/Dice"
+import List from "../elements/List"
+import Number from "../elements/Number"
+import Text from "../elements/Text"
+
+const BASE_KEY = 'magic_'
+
 const MagicSkills = () => (
-    <p className="text-sm">Come back soon!</p>
+    <section>
+        <Text id={`${BASE_KEY}archetype`} label="Archetype" />
+        <hr className="mt-4 mb-4 border-base-content/10" />
+        <section>
+            <p className="text-lg font-bold mb-2">Magic Dice</p>
+            <div className="flex flex-row items-center gap-4">
+                <div className="lg:mr-4">
+                    <Dice id={`${BASE_KEY}dice`} />
+                </div>
+                <div className="flex flex-col flex-1">
+                    <Number id={`${BASE_KEY}available_dice`} label="Available Dice" />
+                    <Number id={`${BASE_KEY}total_die_pool`} label="Total Die Pool" />
+                </div>
+                <div className="flex flex-col flex-1">
+                    <Number id={`${BASE_KEY}bonus_dice`} label="Bonus Dice" />
+                    <Number
+                        id={`${BASE_KEY}overload`}
+                        label="Overload"
+                        tooltip="Your dice will overload if you roll this many dice or more per spell. You must reclaim half of the dice rounded up. For every die above your overload value, you must reclaim an extra two dice."
+                    />
+                </div>
+            </div>
+        </section>
+        <hr className="mt-4 mb-4 border-base-content/10" />
+        <section className="flex flex-row">
+            <div className="w-2/3 pr-6">
+                <p className="text-lg font-bold mb-2">Magic Spells</p>
+                <List id={`${BASE_KEY}spells`} />
+            </div>
+            <div className="w-1/3 pl-6 border-l border-base-content/10">
+                <p className="text-lg font-bold mb-2">Magic Lines</p>
+                <List id={`${BASE_KEY}lines`} full />
+            </div>
+        </section>
+        <hr className="mt-4 mb-4 border-base-content/10" />
+        <section>
+            <p className="text-lg font-bold mb-2">Spell Combos</p>
+            <List id={`${BASE_KEY}spell_combos`} />
+        </section>
+        <hr className="mt-4 mb-4 border-base-content/10" />
+        <section className="flex flex-row">
+            <div className="flex-1 pr-6">
+                <p className="text-lg font-bold mb-2">Origins</p>
+                <List id={`${BASE_KEY}origins`} />
+            </div>
+            <div className="flex-1 pl-6 border-l border-base-content/10">
+                <p className="text-lg font-bold mb-2">Weapon Skills</p>
+                <List id={`${BASE_KEY}weapon_skills`} />
+            </div>
+        </section>
+
+    </section>
 )
 
 export default MagicSkills

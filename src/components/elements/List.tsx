@@ -8,7 +8,7 @@ type ListItem = {
     ascendDice?: boolean
 }
 
-const List = ({ id, toggleAscendDice }: { id: string, toggleAscendDice?: boolean }) => {
+const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: boolean, full?: boolean }) => {
     const { selectedCharacterId } = useContentManagerContext()
     const [items, setItems] = useState<ListItem[]>([])
     const [openIndex, setOpenIndex] = useState<number>(-1)
@@ -65,7 +65,7 @@ const List = ({ id, toggleAscendDice }: { id: string, toggleAscendDice?: boolean
                                     {toggleAscendDice && (
                                         <input type="checkbox" className="checkbox checkbox-xs mr-2" checked={item.ascendDice || false} onChange={() => handleAscendDiceToggle(index)} />
                                     )}
-                                    <input type="text" className="input input-xs inline-block w-1/3" placeholder="Add new skill here..." value={item.name} onChange={(e) => handleNameChange(index, e.target.value)} />
+                                    <input type="text" className={`input input-xs inline-block ${full ? 'w-3/4' : 'w-1/3'}`} placeholder="Add new skill here..." value={item.name} onChange={(e) => handleNameChange(index, e.target.value)} />
                                 </div>
                                 <p>{openIndex === index ? '-' : '+'}</p>
                             </div>
@@ -77,7 +77,7 @@ const List = ({ id, toggleAscendDice }: { id: string, toggleAscendDice?: boolean
                     </details>
                 ))}
             </div>
-            <button className="btn btn-sm btn-neutral mt-2" onClick={handleAdd}>+ Add</button>
+            <button className="btn btn-sm btn-link text-base-content justify-start mt-2 w-full" onClick={handleAdd}>+ Add</button>
         </>
     )
 }
