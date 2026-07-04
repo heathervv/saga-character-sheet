@@ -42,8 +42,8 @@ const Character = () => (
             <p className="text-lg font-bold mb-2">Edge</p>
             <div className="flex flex-col gap-2 sm:flex-row">
                 <Text id={`${BASE_KEY}edge_dice`} label="Edge Dice" />
-                <Number id={`${BASE_KEY}edge_die_pool`} label="Total available dice" />
-                <Number id={`${BASE_KEY}edge_die_used`} label="Dice Used" tooltip="Can be used to allow a reroll and added before or after the result. Your pool replenishes on a week's rest." />
+                <Number id={`${BASE_KEY}edge_die_used`} label="Available Dice" tooltip="Can be used to allow a reroll and added before or after the result. Your pool replenishes on a week's rest." />
+                <Number id={`${BASE_KEY}edge_die_pool`} label="Total Die Pool" />
             </div>
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />

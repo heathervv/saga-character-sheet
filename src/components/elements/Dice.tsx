@@ -50,7 +50,7 @@ const Dice = ({ id }: { id: string }) => {
     return (
         <section>
             <fieldset className="flex flex-row gap-4">
-                <label htmlFor={`${id}_${DICE.D4}`} className={`text-center ${value === DICE.D4 ? "text-accent" : ""}`}>
+                <label htmlFor={`${id}_${DICE.D4}`} className={`cursor-pointer text-center ${value === DICE.D4 ? "text-accent" : ""}`}>
                     <IconD4 className="w-8 h-8" />
                     <input
                         type="radio"
@@ -60,12 +60,11 @@ const Dice = ({ id }: { id: string }) => {
                         hidden
                         onChange={handleChange}
                         onClick={handleClick}
-                        checked={value === DICE.D4}
                     />
                     D4
                 </label>
 
-                <label htmlFor={`${id}_${DICE.D6}`} className={`text-center ${value === DICE.D6 ? "text-accent" : ""}`}>
+                <label htmlFor={`${id}_${DICE.D6}`} className={`cursor-pointer text-center ${value === DICE.D6 ? "text-accent" : ""}`}>
                     <IconD6 className="w-8 h-8" />
                     <input
                         type="radio"
@@ -80,7 +79,7 @@ const Dice = ({ id }: { id: string }) => {
                     D6
                 </label>
 
-                <label htmlFor={`${id}_${DICE.D8}`} className={`text-center ${value === DICE.D8 ? "text-accent" : ""}`}>
+                <label htmlFor={`${id}_${DICE.D8}`} className={`cursor-pointer text-center ${value === DICE.D8 ? "text-accent" : ""}`}>
                     <IconD8 className="w-8 h-8" />
                     <input
                         type="radio"
@@ -94,7 +93,7 @@ const Dice = ({ id }: { id: string }) => {
                     />
                     D8
                 </label>
-                <label htmlFor={`${id}_${DICE.D10}`} className={`text-center ${value === DICE.D10 ? "text-accent" : ""}`}>
+                <label htmlFor={`${id}_${DICE.D10}`} className={`cursor-pointer text-center ${value === DICE.D10 ? "text-accent" : ""}`}>
                     <IconD10 className="w-8 h-8" />
                     <input
                         type="radio"
@@ -108,7 +107,7 @@ const Dice = ({ id }: { id: string }) => {
                     />
                     D10
                 </label>
-                <label htmlFor={`${id}_${DICE.D12}`} className={`text-center ${value === DICE.D12 ? "text-accent" : ""}`}>
+                <label htmlFor={`${id}_${DICE.D12}`} className={`cursor-pointer text-center ${value === DICE.D12 ? "text-accent" : ""}`}>
                     <IconD12 className="w-8 h-8" />
                     <input
                         type="radio"
