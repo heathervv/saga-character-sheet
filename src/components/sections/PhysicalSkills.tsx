@@ -1,22 +1,128 @@
-import Skill from "../elements/Skill"
+import { useEffect, useState } from "react"
+import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
+import Skill, { SCORE_ID } from "../elements/Skill"
 import SkillRoll from "../content/SkillRoll"
 import TextArea from "../elements/TextArea"
 import List from "../elements/List"
 import WithTooltip from "../elements/WithTooltip"
+import { getData, saveData } from '../../data/storageHelpers'
 
 const BASE_KEY = 'physical_'
 
+const slip = `${BASE_KEY}slip`
+const flex = `${BASE_KEY}flex`
+const endure = `${BASE_KEY}endure`
+const resist = `${BASE_KEY}resist`
+const force = `${BASE_KEY}force`
+const wrestle = `${BASE_KEY}wrestle`
+
+const allSkills = [slip, flex, endure, resist, force, wrestle]
+
+const Values = {
+    [slip]: 0,
+    [flex]: 0,
+    [endure]: 0,
+    [resist]: 0,
+    [force]: 0,
+    [wrestle]: 0,
+}
+
+const Scores = {
+    [SCORE_ID(slip)]: 0,
+    [SCORE_ID(flex)]: 0,
+    [SCORE_ID(endure)]: 0,
+    [SCORE_ID(resist)]: 0,
+    [SCORE_ID(force)]: 0,
+    [SCORE_ID(wrestle)]: 0,
+}
+
 const PhysicalSkills = () => {
+    const { selectedCharacterId } = useContentManagerContext()
+    const [values, setValues] = useState<typeof Values>(Values)
+    const [scores, setScores] = useState<typeof Scores>(Scores)
+
+    useEffect(() => {
+        const data: Record<string, number> = {}
+        const score: Record<string, number> = {}
+
+        allSkills.forEach(id => {
+            data[id] = getData<number>(id, selectedCharacterId) || 0
+            score[SCORE_ID(id)] = getData<number>(SCORE_ID(id), selectedCharacterId) || 0
+        })
+
+        setValues(data as typeof Values)
+        setScores(score as typeof Scores)
+    }, [])
+
+    const onValueChange = (id: string, newValue: number) => {
+        saveData(id, newValue, selectedCharacterId)
+        setValues({ ...values, [id]: newValue })
+    }
+
+    const onScoreChange = (scoreId: string, newScore: number) => {
+        saveData(scoreId, newScore, selectedCharacterId)
+        setScores({ ...scores, [scoreId]: newScore })
+    }
+
     return (
         <section>
             <section className="flex flex-row gap-2">
                 <div className="flex flex-col gap-4 grow md:pr-6">
-                    <Skill id={`${BASE_KEY}slip`} name="Slip" />
-                    <Skill id={`${BASE_KEY}flex`} name="Flex" subtitle="(Slip/Endure)" />
-                    <Skill id={`${BASE_KEY}endure`} name="Endure" />
-                    <Skill id={`${BASE_KEY}resist`} name="Resist" subtitle="(Endure/Force)" />
-                    <Skill id={`${BASE_KEY}force`} name="Force" />
-                    <Skill id={`${BASE_KEY}wrestle`} name="Wrestle" subtitle="(Force/Slip)" />
+                    <Skill
+                        id={slip}
+                        name="Slip"
+                        scoreId={SCORE_ID(slip)}
+                        value={values?.[slip]}
+                        score={scores?.[SCORE_ID(slip)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={flex}
+                        name="Flex"
+                        subtitle="(Slip/Endure)"
+                        value={values?.[flex]}
+                        score={scores?.[SCORE_ID(flex)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={endure}
+                        name="Endure"
+                        scoreId={SCORE_ID(endure)}
+                        value={values?.[endure]}
+                        score={scores?.[SCORE_ID(endure)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={resist}
+                        name="Resist"
+                        subtitle="(Endure/Force)"
+                        value={values?.[resist]}
+                        score={scores?.[SCORE_ID(resist)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={force}
+                        name="Force"
+                        scoreId={SCORE_ID(force)}
+                        value={values?.[force]}
+                        score={scores?.[SCORE_ID(force)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={wrestle}
+                        name="Wrestle"
+                        subtitle="(Force/Slip)"
+                        scoreId={SCORE_ID(wrestle)}
+                        value={values?.[wrestle]}
+                        score={scores?.[SCORE_ID(wrestle)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
                 </div>
                 <div className="hidden md:block pl-6 border-l border-base-content/10">
                     <SkillRoll />

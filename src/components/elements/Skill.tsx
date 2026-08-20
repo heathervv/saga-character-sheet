@@ -1,34 +1,40 @@
-import { useState, useEffect } from "react"
-import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
 import Dice from "../elements/Dice"
-import { getData, saveData } from '../../data/storageHelpers'
 
-const Skill = ({ id, name, subtitle }: { id: string; name: string; subtitle?: string }) => {
-    const SCORE_ID = `${id}_score`
-    const { selectedCharacterId } = useContentManagerContext()
-    const [value, setValue] = useState<number>(0)
-    const [score, setScore] = useState<number>(0)
+export const SCORE_ID = (requestedId: string) => `${requestedId}_score`
 
-    useEffect(() => {
-        const data = getData<number>(id, selectedCharacterId)
-        const score = getData<number>(SCORE_ID, selectedCharacterId)
+type Props = {
+    id: string;
+    name: string;
+    subtitle?: string;
+    scoreId?: string;
+    value?: number;
+    score?: number;
+    handleValueChange: (id: string, newValue: number) => void;
+    handleScoreChange: (scoreId: string, newScore: number) => void;
+}
 
-        setValue(data || 0)
-        setScore(score || 0)
-    }, [selectedCharacterId])
+const Skill = ({
+    id,
+    name,
+    subtitle,
+    scoreId,
+    value,
+    score,
+    handleValueChange,
+    handleScoreChange
 
+}: Props) => {
     const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value
         const parsedValue = parseInt(newValue, 10)
-        setValue(isNaN(parsedValue) ? 0 : parsedValue)
-        saveData<number>(id, parsedValue, selectedCharacterId)
+
+        handleValueChange(id, isNaN(parsedValue) ? 0 : parsedValue)
     }
 
     const onScoreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value
         const parsedValue = parseInt(newValue, 10)
-        setScore(isNaN(parsedValue) ? 0 : parsedValue)
-        saveData<number>(SCORE_ID, parsedValue, selectedCharacterId)
+        handleScoreChange(scoreId!, isNaN(parsedValue) ? 0 : parsedValue)
     }
 
     return (
@@ -47,7 +53,7 @@ const Skill = ({ id, name, subtitle }: { id: string; name: string; subtitle?: st
                     ) : (
                         <>
                             <p className="text-sm mr-2">Skill Score:</p>
-                            <input className="text-sm w-12" min="0" max="20" name={SCORE_ID} type="number" value={score} onChange={onScoreChange} />
+                            <input className="text-sm w-12" min="0" max="20" name={scoreId} type="number" value={score} onChange={onScoreChange} />
                         </>
                     )}
 

@@ -1,22 +1,127 @@
-import Skill from "../elements/Skill"
+import { useEffect, useState } from "react"
+import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
+import Skill, { SCORE_ID } from "../elements/Skill"
 import SkillRoll from "../content/SkillRoll"
 import TextArea from "../elements/TextArea"
 import List from "../elements/List"
 import WithTooltip from "../elements/WithTooltip"
+import { getData, saveData } from '../../data/storageHelpers'
 
 const BASE_KEY = 'social_'
 
+const charm = `${BASE_KEY}charm`
+const advise = `${BASE_KEY}advise`
+const intuit = `${BASE_KEY}intuit`
+const improvise = `${BASE_KEY}improvise`
+const intellect = `${BASE_KEY}intellect`
+const deceive = `${BASE_KEY}deceive`
+
+const allSkills = [charm, advise, intuit, improvise, intellect, deceive]
+
+const Values = {
+    [charm]: 0,
+    [advise]: 0,
+    [intuit]: 0,
+    [improvise]: 0,
+    [intellect]: 0,
+    [deceive]: 0,
+}
+
+const Scores = {
+    [SCORE_ID(charm)]: 0,
+    [SCORE_ID(advise)]: 0,
+    [SCORE_ID(intuit)]: 0,
+    [SCORE_ID(improvise)]: 0,
+    [SCORE_ID(intellect)]: 0,
+    [SCORE_ID(deceive)]: 0,
+}
+
 const SocialSkills = () => {
+    const { selectedCharacterId } = useContentManagerContext()
+    const [values, setValues] = useState<typeof Values>(Values)
+    const [scores, setScores] = useState<typeof Scores>(Scores)
+
+    useEffect(() => {
+        const data: Record<string, number> = {}
+        const score: Record<string, number> = {}
+
+        allSkills.forEach(id => {
+            data[id] = getData<number>(id, selectedCharacterId) || 0
+            score[SCORE_ID(id)] = getData<number>(SCORE_ID(id), selectedCharacterId) || 0
+        })
+
+        setValues(data as typeof Values)
+        setScores(score as typeof Scores)
+    }, [])
+
+    const onValueChange = (id: string, newValue: number) => {
+        saveData(id, newValue, selectedCharacterId)
+        setValues({ ...values, [id]: newValue })
+    }
+
+    const onScoreChange = (scoreId: string, newScore: number) => {
+        saveData(scoreId, newScore, selectedCharacterId)
+        setScores({ ...scores, [scoreId]: newScore })
+    }
+
     return (
         <section>
             <section className="flex flex-row gap-2">
                 <div className="flex flex-col gap-4 grow md:pr-6">
-                    <Skill id={`${BASE_KEY}charm`} name="Charm" />
-                    <Skill id={`${BASE_KEY}advise`} name="Advise" subtitle="(Charm/Intuit)" />
-                    <Skill id={`${BASE_KEY}intuit`} name="Intuit" />
-                    <Skill id={`${BASE_KEY}improvise`} name="Improvise" subtitle="(Intuit/Intellect)" />
-                    <Skill id={`${BASE_KEY}intellect`} name="Intellect" />
-                    <Skill id={`${BASE_KEY}deceive`} name="Deceive" subtitle="(Intellect/Charm)" />
+                    <Skill
+                        id={charm}
+                        name="Charm"
+                        scoreId={SCORE_ID(charm)}
+                        value={values?.[charm]}
+                        score={scores?.[SCORE_ID(charm)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={advise}
+                        name="Advise"
+                        subtitle="(Charm/Intuit)"
+                        value={values?.[advise]}
+                        score={scores?.[SCORE_ID(advise)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={intuit}
+                        name="Intuit"
+                        scoreId={SCORE_ID(intuit)}
+                        value={values?.[intuit]}
+                        score={scores?.[SCORE_ID(intuit)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={improvise}
+                        name="Improvise"
+                        subtitle="(Intuit/Intellect)"
+                        value={values?.[improvise]}
+                        score={scores?.[SCORE_ID(improvise)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={intellect}
+                        name="Intellect"
+                        scoreId={SCORE_ID(intellect)}
+                        value={values?.[intellect]}
+                        score={scores?.[SCORE_ID(intellect)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
+                    <Skill
+                        id={deceive}
+                        name="Deceive"
+                        subtitle="(Intellect/Charm)"
+                        value={values?.[deceive]}
+                        score={scores?.[SCORE_ID(deceive)]}
+                        handleValueChange={onValueChange}
+                        handleScoreChange={onScoreChange}
+                    />
                 </div>
                 <div className="hidden md:block pl-6 border-l border-base-content/10">
                     <SkillRoll />
