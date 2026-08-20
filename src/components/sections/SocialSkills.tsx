@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
-import { SCORE_ID, updateRelatedScores } from '../../helpers/helpers'
+import { SCORE_ID, updateRelatedScores, updateEquivalentScore } from '../../helpers/helpers'
 import Skill from "../elements/Skill"
 import SkillRoll from "../content/SkillRoll"
 import TextArea from "../elements/TextArea"
@@ -72,6 +72,15 @@ const SocialSkills = () => {
                 scores,
                 newValue > prevValue,
                 relatedSkills[id],
+                selectedCharacterId,
+            )
+
+            setScores(updatedScores)
+        } else {
+            const updatedScores = updateEquivalentScore(
+                SCORE_ID(id),
+                scores,
+                newValue > prevValue,
                 selectedCharacterId,
             )
 
