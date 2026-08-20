@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
-import Skill, { SCORE_ID } from "../elements/Skill"
+import { SCORE_ID, updateRelatedScores } from '../../helpers/helpers'
+import Skill from "../elements/Skill"
 import SkillRoll from "../content/SkillRoll"
 import TextArea from "../elements/TextArea"
 import List from "../elements/List"
@@ -36,6 +37,12 @@ const Scores = {
     [SCORE_ID(wrestle)]: 0,
 }
 
+const relatedSkills: Record<string, string[]> = {
+    [flex]: [SCORE_ID(slip), SCORE_ID(endure)],
+    [resist]: [SCORE_ID(endure), SCORE_ID(force)],
+    [wrestle]: [SCORE_ID(force), SCORE_ID(slip)],
+}
+
 const PhysicalSkills = () => {
     const { selectedCharacterId } = useContentManagerContext()
     const [values, setValues] = useState<typeof Values>(Values)
@@ -55,8 +62,21 @@ const PhysicalSkills = () => {
     }, [])
 
     const onValueChange = (id: string, newValue: number) => {
+        const prevValue = values[id as keyof typeof values]
+
         saveData(id, newValue, selectedCharacterId)
         setValues({ ...values, [id]: newValue })
+
+        if (relatedSkills[id]) {
+            const updatedScores = updateRelatedScores(
+                scores,
+                newValue > prevValue,
+                relatedSkills[id],
+                selectedCharacterId,
+            )
+
+            setScores(updatedScores)
+        }
     }
 
     const onScoreChange = (scoreId: string, newScore: number) => {

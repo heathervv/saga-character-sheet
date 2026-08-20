@@ -1,7 +1,5 @@
 import Dice from "../elements/Dice"
 
-export const SCORE_ID = (requestedId: string) => `${requestedId}_score`
-
 type Props = {
     id: string;
     name: string;
