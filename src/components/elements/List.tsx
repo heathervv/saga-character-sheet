@@ -9,7 +9,17 @@ type ListItem = {
     ascendDice?: boolean
 }
 
-const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: boolean, full?: boolean }) => {
+const List = ({
+    id,
+    type,
+    toggleAscendDice,
+    full
+}: {
+    id: string,
+    type?: string
+    toggleAscendDice?: boolean,
+    full?: boolean
+}) => {
     const { selectedCharacterId } = useContentManagerContext()
     const [items, setItems] = useState<ListItem[]>([])
     const [openIndex, setOpenIndex] = useState<number>(-1)
@@ -77,7 +87,7 @@ const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: b
                                     <input
                                         type="text"
                                         className={`input input-xs inline-block ${full ? 'w-1/3 lg:w-3/4' : 'w-1/3'}`}
-                                        placeholder="Add new skill here..."
+                                        placeholder={`Add new ${type || 'skill'} here...`}
                                         value={item.name}
                                         onChange={(e) => handleNameChange(index, e.target.value)}
                                     />
@@ -95,7 +105,7 @@ const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: b
                                 className="btn btn-xs btn-error mt-2"
                                 onClick={() => handleRemove(index)}
                             >
-                                Remove skill
+                                Remove {type || 'skill'}
                             </button>
                         </div>
                     </details>

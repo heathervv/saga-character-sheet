@@ -17,7 +17,7 @@ const HigherPower = () => (
             <WithTooltip text="Once per weeks rest you may ask for one miracle from your higher power source, which will be provided if it's a reasonable request aligned with their ideals, and will replenish on a week's rest if your deity is pleased with you.">
                 <p className="text-lg font-bold inline-block mb-2">Miracles</p>
             </WithTooltip>
-            <List id={`${BASE_KEY}miracles`} />
+            <List id={`${BASE_KEY}miracles`} type="miracle" />
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section>
@@ -44,18 +44,18 @@ const HigherPower = () => (
         <section>
             <p className="block text-lg font-bold mb-2">Boons</p>
             <p className="text-md font-bold inline-block mb-2">Primary Boons</p>
-            <List id={`${BASE_KEY}primary_boons`} />
+            <List id={`${BASE_KEY}primary_boons`} type="boon" />
             <span className="block mb-4" />
             <p className="text-md font-bold inline-block mb-2">Secondary Boons</p>
-            <List id={`${BASE_KEY}secondary_boons`} />
+            <List id={`${BASE_KEY}secondary_boons`} type="boon" />
             <span className="block mb-4" />
             <p className="text-md font-bold inline-block mb-2">Tertiary Boons</p>
-            <List id={`${BASE_KEY}tertiary_boons`} />
+            <List id={`${BASE_KEY}tertiary_boons`} type="boon" />
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section>
             <p className="text-lg font-bold inline-block mb-2">Corruptions</p>
-            <List id={`${BASE_KEY}corruptions`} />
+            <List id={`${BASE_KEY}corruptions`} type="corruption" />
         </section>
     </section>
 )

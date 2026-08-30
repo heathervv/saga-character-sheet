@@ -41,7 +41,7 @@ const WarriorSkills = () => (
             </div>
             <div className="pt-4 lg:pt-0 lg:w-1/3 lg:pl-6 lg:border-l lg:border-base-content/10">
                 <p className="text-lg font-bold mb-2">Origins</p>
-                <List id={`${BASE_KEY}origins`} />
+                <List id={`${BASE_KEY}origins`} type="origin" />
             </div>
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />

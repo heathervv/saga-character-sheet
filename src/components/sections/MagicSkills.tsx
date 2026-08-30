@@ -37,27 +37,27 @@ const MagicSkills = () => (
         <section className="flex flex-col lg:flex-row">
             <div className="lg:w-2/3 lg:pr-6">
                 <p className="text-lg font-bold mb-2">Magic Spells</p>
-                <List id={`${BASE_KEY}spells`} />
+                <List id={`${BASE_KEY}spells`} type="spell" />
             </div>
             <div className="pt-4 lg:pt-0 lg:w-1/3 lg:pl-6 lg:border-l lg:border-base-content/10">
                 <p className="text-lg font-bold mb-2">Magic Lines</p>
-                <List id={`${BASE_KEY}lines`} full />
+                <List id={`${BASE_KEY}lines`} full type="line" />
             </div>
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section>
             <p className="text-lg font-bold mb-2">Spell Combos</p>
-            <List id={`${BASE_KEY}spell_combos`} />
+            <List id={`${BASE_KEY}spell_combos`} type="spell combo" />
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section className="flex flex-col lg:flex-row">
             <div className="flex-1 lg:pr-6">
                 <p className="text-lg font-bold mb-2">Origins</p>
-                <List id={`${BASE_KEY}origins`} />
+                <List id={`${BASE_KEY}origins`} type="origin" />
             </div>
             <div className="pt-4 lg:pt-0 flex-1 lg:pl-6 lg:border-l lg:border-base-content/10">
                 <p className="text-lg font-bold mb-2">Weapon Skills</p>
-                <List id={`${BASE_KEY}weapon_skills`} />
+                <List id={`${BASE_KEY}weapon_skills`} type="weapon skill" />
             </div>
         </section>
 
