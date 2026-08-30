@@ -8,7 +8,7 @@ type Props = {
     value?: number;
     score?: number;
     handleValueChange: (id: string, newValue: number) => void;
-    handleScoreChange: (scoreId: string, newScore: number) => void;
+    handleScoreChange: (scoreId: string, newScore: number | string) => void;
 }
 
 const Skill = ({
@@ -32,7 +32,7 @@ const Skill = ({
     const onScoreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newValue = e.target.value
         const parsedValue = parseInt(newValue, 10)
-        handleScoreChange(scoreId!, isNaN(parsedValue) ? 0 : parsedValue)
+        handleScoreChange(scoreId!, isNaN(parsedValue) ? "" : parsedValue)
     }
 
     return (

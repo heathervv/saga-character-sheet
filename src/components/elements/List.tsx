@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
 import { getData, saveData } from '../../data/storageHelpers'
+import { handleSummaryClick } from '../../helpers/helpers'
 
 type ListItem = {
     name: string
@@ -33,28 +34,6 @@ const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: b
         setOpenIndex(openIndex === index ? -1 : index)
     }
 
-    const handleSummaryClick = (index: number, e: React.MouseEvent<HTMLElement>) => {
-        // Because there are interactive elements within the summary, we need to check if
-        // the click is coming from an interactive child element and prevent the toggle if so.
-        const target = e.target as HTMLElement
-        const activeElement = document.activeElement as HTMLElement | null
-        const clickedInteractiveChild = !!target.closest('input, textarea, select, button, a, [role="button"]')
-        const keyboardClickFromFocusedChild = e.detail === 0 && !!activeElement && e.currentTarget.contains(activeElement)
-
-        // The event is from typing in the input, actively supress it AND skip toggle behaviour
-        if (keyboardClickFromFocusedChild) {
-            e.preventDefault()
-            return
-        }
-
-        // Event is from an interactive child, skip toggle behaviour
-        if (clickedInteractiveChild) {
-            return
-        }
-
-        handleToggle(index)
-    }
-
     const handleNameChange = (index: number, newName: string) => {
         const newItems = [...items]
         newItems[index].name = newName
@@ -83,7 +62,7 @@ const List = ({ id, toggleAscendDice, full }: { id: string, toggleAscendDice?: b
                     <details key={`${id}-${index}`} className="collapse bg-base-100 border border-base-content/30" name={`accordion-${id}`}>
                         <summary
                             className="collapse-title text-sm py-2 px-4"
-                            onClick={(e) => handleSummaryClick(index, e)}
+                            onClick={(e) => handleSummaryClick(index, handleToggle, e)}
                         >
                             <div className="flex flex-row justify-between items-center">
                                 <div className="grow">

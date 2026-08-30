@@ -41,3 +41,25 @@ export const updateEquivalentScore = (
 
     return updatedScores
 }
+
+export const handleSummaryClick = (index: number, handleToggle: (index: number) => void, e: React.MouseEvent<HTMLElement>) => {
+    // Because there are interactive elements within the summary, we need to check if
+    // the click is coming from an interactive child element and prevent the toggle if so.
+    const target = e.target as HTMLElement
+    const activeElement = document.activeElement as HTMLElement | null
+    const clickedInteractiveChild = !!target.closest('input, textarea, select, button, a, [role="button"]')
+    const keyboardClickFromFocusedChild = e.detail === 0 && !!activeElement && e.currentTarget.contains(activeElement)
+
+    // The event is from typing in the input, actively supress it AND skip toggle behaviour
+    if (keyboardClickFromFocusedChild) {
+        e.preventDefault()
+        return
+    }
+
+    // Event is from an interactive child, skip toggle behaviour
+    if (clickedInteractiveChild) {
+        return
+    }
+
+    handleToggle(index)
+}
