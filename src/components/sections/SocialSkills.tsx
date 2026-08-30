@@ -88,9 +88,9 @@ const SocialSkills = () => {
         }
     }
 
-    const onScoreChange = (scoreId: string, newScore: number) => {
+    const onScoreChange = (scoreId: string, newScore: number | string) => {
         saveData(scoreId, newScore, selectedCharacterId)
-        setScores({ ...scores, [scoreId]: newScore })
+        setScores({ ...scores, [scoreId]: newScore as number })
     }
 
     return (
