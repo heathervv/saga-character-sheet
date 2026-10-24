@@ -9,7 +9,7 @@ export enum THEMES {
 }
 
 export const THEME_NAMES = {
-    [THEMES.LIGHT]: 'pastel',
+    [THEMES.LIGHT]: 'lightbro',
     [THEMES.DARK]: 'dracula',
 }
 
