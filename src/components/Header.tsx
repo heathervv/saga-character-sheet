@@ -26,7 +26,7 @@ const Header = () => {
                 />
                 <a
                     className="flex items-center text-base-content text-sm ml-4"
-                    href="https://discord.com/channels/1163292043527852032/1196278876414955621/1458629625843290395"
+                    href="https://discord.com/channels/1163292043527852032/1196278876414955621/1544548735751684166"
                     target="_blank"
                 >
                     Rules
