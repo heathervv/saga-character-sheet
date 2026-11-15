@@ -2,6 +2,7 @@ import Dice from "../elements/Dice"
 import List from "../elements/List"
 import Number from "../elements/Number"
 import Text from "../elements/Text"
+import TextArea from "../elements/TextArea"
 import WeaponList from "../elements/WeaponList"
 
 const BASE_KEY = 'warrior_'
@@ -48,6 +49,10 @@ const WarriorSkills = () => (
         <section>
             <p className="text-lg font-bold mb-2">Weapons</p>
             <WeaponList id={`${BASE_KEY}weapons`} />
+        </section>
+        <hr className="mt-4 mb-4 border-base-content/10" />
+        <section>
+            <TextArea id={`${BASE_KEY}notes`} label="Notes" />
         </section>
     </section>
 )

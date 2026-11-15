@@ -2,6 +2,7 @@ import Dice from "../elements/Dice"
 import List from "../elements/List"
 import Number from "../elements/Number"
 import Text from "../elements/Text"
+import TextArea from "../elements/TextArea"
 import { Direction } from "../elements/WithTooltip"
 
 const BASE_KEY = 'magic_'
@@ -62,7 +63,10 @@ const MagicSkills = () => (
                 <List id={`${BASE_KEY}weapon_skills`} type="weapon skill" />
             </div>
         </section>
-
+        <hr className="mt-4 mb-4 border-base-content/10" />
+        <section>
+            <TextArea id={`${BASE_KEY}notes`} label="Notes" />
+        </section>
     </section>
 )
 

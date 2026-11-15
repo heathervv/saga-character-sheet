@@ -1,6 +1,7 @@
 import List from "../elements/List"
 import Number from "../elements/Number"
 import Text from "../elements/Text"
+import TextArea from "../elements/TextArea"
 import WithTooltip, { Direction } from "../elements/WithTooltip"
 
 const BASE_KEY = 'higher_power_'
@@ -57,6 +58,10 @@ const HigherPower = () => (
         <section>
             <p className="text-lg font-bold inline-block mb-2">Corruptions</p>
             <List id={`${BASE_KEY}corruptions`} type="corruption" />
+        </section>
+        <hr className="mt-4 mb-4 border-base-content/10" />
+        <section>
+            <TextArea id={`${BASE_KEY}notes`} label="Notes" />
         </section>
     </section>
 )
