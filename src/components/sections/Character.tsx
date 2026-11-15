@@ -58,7 +58,7 @@ const Character = () => (
                 <Number id={`${BASE_KEY}edge_die_pool`} label="Total Die Pool" />
             </div>
             <WithTooltip
-                text="Reduces damage taken. Come from pieces of armour and breaks on a 1 or 2. When a dice breaks you lose a point of resistance."
+                text="Comes from pieces of armourin your kit. Helps reduce damage taken."
                 direction={Direction.Right}
             >
                 <p className="text-md font-bold mt-4 mb-2 inline-block">Protection</p>
@@ -73,7 +73,12 @@ const Character = () => (
                 <Number
                     id={`${BASE_KEY}protection_durability`}
                     label="Durability"
-                    tooltip="Each dice you use above this amount increases the break value by 2."
+                    tooltip="Each dice you use above this amount increases the break value by 2 (Base break value is 1 or 2)."
+                />
+                <Number
+                    id={`${BASE_KEY}protection_resistance`}
+                    label="Resistance"
+                    tooltip="Reduces the amount of damage taken. When a dice breaks you lose a point of resistance."
                     tooltipPlacement={Direction.Left}
                 />
             </div>
