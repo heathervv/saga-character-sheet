@@ -7,8 +7,6 @@ import WithTooltip, { Direction } from '../elements/WithTooltip'
 
 const BASE_KEY = 'character_'
 
-// @TODO DOCS - any other useful tooltips that should be added here?
-
 const Character = () => (
     <section>
         <section className="flex flex-col gap-2 md:flex-row">
@@ -45,14 +43,45 @@ const Character = () => (
                     />
                 </div>
             </div>
-        </section>
-        <hr className="mt-4 mb-4 border-base-content/10" />
-        <section>
-            <p className="text-lg font-bold mb-2">Edge</p>
+            <WithTooltip
+                text="Can be used to allow a reroll and added before or after the result. Your pool replenishes on a week's rest."
+                direction={Direction.Right}
+            >
+                <p className="text-md font-bold mt-4 mb-2 inline-block">Edge</p>
+            </WithTooltip>
             <div className="flex flex-col gap-2 sm:flex-row">
-                <Text id={`${BASE_KEY}edge_dice`} label="Edge Dice" />
-                <Number id={`${BASE_KEY}edge_die_used`} label="Available Dice" tooltip="Can be used to allow a reroll and added before or after the result. Your pool replenishes on a week's rest." />
+                <Number
+                    id={`${BASE_KEY}edge_die_used`}
+                    label="Available Dice"
+                />
+                <Text id={`${BASE_KEY}edge_dice`} label="Dice Type" tooltip="e.g. D4, D6, or D10" />
                 <Number id={`${BASE_KEY}edge_die_pool`} label="Total Die Pool" />
+            </div>
+            <WithTooltip
+                text="Reduces damage taken. Come from pieces of armour and breaks on a 1 or 2. When a dice breaks you lose a point of resistance."
+                direction={Direction.Right}
+            >
+                <p className="text-md font-bold mt-4 mb-2 inline-block">Protection</p>
+            </WithTooltip>
+            <div className="flex flex-col gap-2 sm:flex-row">
+                <Number
+                    id={`${BASE_KEY}protection_die_used`}
+                    label="Available Dice"
+                />
+                <Text id={`${BASE_KEY}protection_dice`} label="Dice Type" tooltip="e.g. D4, D6, or D10" />
+                <Number id={`${BASE_KEY}protection_die_pool`} label="Total Die Pool" />
+                <Number
+                    id={`${BASE_KEY}protection_durability`}
+                    label="Durability"
+                    tooltip="Each dice you use above this amount increases the break value by 2."
+                    tooltipPlacement={Direction.Left}
+                />
+            </div>
+            <div className="flex flex-col gap-2 mt-2">
+                <TextArea
+                    id={`${BASE_KEY}protection_notes`}
+                    label="Kit"
+                />
             </div>
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
@@ -83,8 +112,8 @@ const Character = () => (
                     </div>
                     <div className="block lg:hidden">
                         <WithTooltip text="Allows you to ascend dice on a collective action." direction={Direction.Right}>
-                        <p className="text-sm inline-block">Rapport</p>
-                    </WithTooltip>
+                            <p className="text-sm inline-block">Rapport</p>
+                        </WithTooltip>
                     </div>
                     <List id={`${BASE_KEY}rapport_list`} type="rapport" full />
                 </div>
