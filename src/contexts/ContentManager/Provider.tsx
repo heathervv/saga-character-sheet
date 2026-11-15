@@ -49,10 +49,14 @@ export const ContentManagerProvider = ({ children }: { children: React.ReactNode
         }
     }, [saveLatestOrder])
 
+    const setSelectedCharacter = (characterIds: string[]) => {
+        setSelectedCharacterId(characterIds[0])
+    }
+
     return (
         <ContentManagerContext.Provider
             value={{
-                activeSection, setActiveSection, order, setOrder, saveLatestOrder, selectedCharacterId
+                activeSection, setActiveSection, order, setOrder, saveLatestOrder, selectedCharacterId, setSelectedCharacter
             }}
         >
             {children}

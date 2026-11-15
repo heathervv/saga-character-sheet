@@ -11,6 +11,7 @@ interface ContentManagerContextType {
     setOrder: (order: SECTIONS[]) => void;
     saveLatestOrder: (order: SECTIONS[]) => void;
     selectedCharacterId?: string;
+    setSelectedCharacter: (characterIds: string[]) => void;
 }
 
 export const ContentManagerContext = createContext<ContentManagerContextType | null>(null)
@@ -24,11 +25,11 @@ export const useContentManagerContext = () => {
         order,
         setOrder,
         saveLatestOrder,
-        selectedCharacterId
-
+        selectedCharacterId,
+        setSelectedCharacter,
     } = context || {}
 
     return {
-        activeSection, setActiveSection, order, setOrder, saveLatestOrder, selectedCharacterId
+        activeSection, setActiveSection, order, setOrder, saveLatestOrder, selectedCharacterId, setSelectedCharacter
     }
 }

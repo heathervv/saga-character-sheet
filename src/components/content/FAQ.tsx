@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import type { ChangeEvent } from "react"
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react'
+import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
 import IconClose from '../../assets/images/icon-close'
 import Alert from './Alert'
 import { exportToJson } from '../../data/storageHelpers'
@@ -12,6 +13,7 @@ const FAQ = ({
     isOpen: boolean;
     handleOpen: (value?: boolean) => void;
 }) => {
+    const { setSelectedCharacter } = useContentManagerContext()
     const [confirmAction, setConfirmAction] = useState<boolean>(false)
 
     const handleClose = () => {
@@ -57,6 +59,8 @@ const FAQ = ({
                 Object.entries(fileData).forEach(([key, value]) => {
                     localStorage.setItem(key, value as string)
                 })
+
+                setSelectedCharacter?.(JSON.parse(fileData.character_ids))
 
                 event.target.value = ""
             }
