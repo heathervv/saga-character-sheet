@@ -30,7 +30,7 @@ const Character = () => (
                     />
                     <Number id={`${BASE_KEY}buffers_max`} label="Total Buffers" />
                 </div>
-                <div className="flex flex-col grow">
+                <div className="flex flex-col grow gap-2">
                     <Number id={`${BASE_KEY}energy`} label="Energy" />
                     <Number id={`${BASE_KEY}attack`} label="Attack Strength" />
                 </div>
