@@ -118,7 +118,7 @@ const List = ({
                                         )}
                                         <input
                                             type="text"
-                                            className={`input input-xs inline-block ${full ? 'w-1/3 lg:w-3/4' : 'w-1/3'}`}
+                                            className={`input input-xs inline-block ${full ? 'w-1/2 lg:w-3/4' : 'w-1/2'}`}
                                             placeholder={`Add new ${type || 'skill'} here...`}
                                             value={item.name}
                                             onChange={(e) => handleNameChange(index, e.target.value)}
