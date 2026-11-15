@@ -98,7 +98,7 @@ const Character = () => (
         <section>
             <p className="text-lg font-bold mb-2">Other Notable Traits</p>
             <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 lg:w-1/2">
                     <TextArea
                         id={`${BASE_KEY}reputation`}
                         label="Reputation"
@@ -106,7 +106,7 @@ const Character = () => (
                     <TextArea id={`${BASE_KEY}grief`} label="Grief" />
                     <TextArea id={`${BASE_KEY}injuries`} label="Injuries" />
                 </div>
-                <div className="flex flex-col grow gap-2 lg:pl-4 lg:border-l lg:border-base-content/10">
+                <div className="flex flex-col lg:w-1/2 gap-2 lg:pl-4 lg:border-l lg:border-base-content/10">
                     {/* THERE IS A TEMPORARY MIGRATION AT PLAY HERE (in ContentManager) */}
                     {/* {BASE_KEY}rapport translated into {BASE_KEY}rapport_list */}
                     {/* Safe to remove by Dec 1, 2026 */}
