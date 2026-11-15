@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { nanoid } from 'nanoid'
 import { ContentManagerContext } from './ContentManager'
 import { SECTIONS } from '../../data/sections'
+import { runAnyMigrations } from './migrations'
 
 const CHARACTER_IDS_KEY = 'character_ids'
 const BASE_ORDER = Object.values(SECTIONS).map((section: SECTIONS) => section)
@@ -29,6 +30,8 @@ export const ContentManagerProvider = ({ children }: { children: React.ReactNode
 
         if (parsedSavedCharacterIds) {
             setSelectedCharacterId(parsedSavedCharacterIds[0])
+
+            runAnyMigrations(parsedSavedCharacterIds[0])
         } else {
             const newCharacterId = nanoid()
             setSelectedCharacterId(newCharacterId)

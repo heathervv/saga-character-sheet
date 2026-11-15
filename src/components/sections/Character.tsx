@@ -3,6 +3,7 @@ import TextArea from '../elements/TextArea'
 import Number from '../elements/Number'
 import Checkbox from '../elements/Checkbox'
 import List from '../elements/List'
+import WithTooltip from '../elements/WithTooltip'
 
 const BASE_KEY = 'character_'
 
@@ -47,27 +48,32 @@ const Character = () => (
             </div>
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
-        <section className="flex flex-col gap-2 lg:gap-4">
-            <div className="flex flex-col gap-2 lg:gap-4 lg:block lg:columns-2">
-                <TextArea id={`${BASE_KEY}grief`} label="Grief" />
-                <TextArea id={`${BASE_KEY}injuries`} label="Injuries" />
-            </div>
-            <div className="flex flex-col gap-2 lg:gap-4 lg:block lg:columns-2">
-                <TextArea
-                    id={`${BASE_KEY}rapport`}
-                    label="Rapport"
-                    tooltip="Allows you to ascend dice on a collective action."
-                />
-                <TextArea
-                    id={`${BASE_KEY}reputation`}
-                    label="Reputation"
-                />
-            </div>
+        <section>
+            <p className="text-lg font-bold mb-2">General or Group Skills</p>
+            <List id={`${BASE_KEY}group_skills`} />
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section>
-            <p className="text-lg font-bold mb-2">Group Skills</p>
-            <List id={`${BASE_KEY}group_skills`} />
+            <p className="text-lg font-bold mb-2">Other Notable Traits</p>
+            <div className="flex flex-col lg:flex-row gap-2 lg:gap-4">
+                <div className="flex flex-col gap-2">
+                    <TextArea
+                        id={`${BASE_KEY}reputation`}
+                        label="Reputation"
+                    />
+                    <TextArea id={`${BASE_KEY}grief`} label="Grief" />
+                    <TextArea id={`${BASE_KEY}injuries`} label="Injuries" />
+                </div>
+                <div className="flex flex-col grow gap-2 lg:pl-4 lg:border-l lg:border-base-content/10">
+                    {/* THERE IS A TEMPORARY MIGRATION AT PLAY HERE (in ContentManager) */}
+                    {/* {BASE_KEY}rapport translated into {BASE_KEY}rapport_list */}
+                    {/* Safe to remove by Dec 1, 2026 */}
+                    <WithTooltip text="Allows you to ascend dice on a collective action.">
+                        <p className="text-sm inline-block">Rapport</p>
+                    </WithTooltip>
+                    <List id={`${BASE_KEY}rapport_list`} type="rapport" full />
+                </div>
+            </div>
         </section>
     </section>
 )
