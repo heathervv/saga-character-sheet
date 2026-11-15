@@ -2,6 +2,7 @@ import Dice from "../elements/Dice"
 import List from "../elements/List"
 import Number from "../elements/Number"
 import Text from "../elements/Text"
+import { Direction } from "../elements/WithTooltip"
 
 const BASE_KEY = 'magic_'
 
@@ -20,6 +21,7 @@ const MagicSkills = () => (
                         id={`${BASE_KEY}available_dice`}
                         label="Available Dice"
                         tooltip="Dice that are half or lower are removed from the pool, requiring a week's rest to replenish. This is ignored with a nat 20."
+                        tooltipPlacement={Direction.Right}
                     />
                     <Number id={`${BASE_KEY}total_die_pool`} label="Total Die Pool" />
                 </div>

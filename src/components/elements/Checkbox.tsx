@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useContentManagerContext } from '../../contexts/ContentManager/ContentManager'
 import { getData, saveData } from '../../data/storageHelpers'
-import WithTooltip from './WithTooltip'
+import WithTooltip, { Direction } from './WithTooltip'
 
-const Checkbox = ({ id, label, tooltip }: { id: string; label: string; tooltip?: string }) => {
+const Checkbox = ({ id, label, tooltip, tooltipPlacement }: { id: string; label: string; tooltip?: string, tooltipPlacement?: Direction }) => {
     const { selectedCharacterId } = useContentManagerContext()
     const [value, setValue] = useState<boolean>(false)
 
@@ -22,7 +22,7 @@ const Checkbox = ({ id, label, tooltip }: { id: string; label: string; tooltip?:
     return (
         <div className="block grow">
             {tooltip ? (
-                <WithTooltip text={tooltip}>
+                <WithTooltip text={tooltip} direction={tooltipPlacement}>
                     <label className="mb-1 text-sm" htmlFor={id}>{label}:</label>
                 </WithTooltip>
             ) : (

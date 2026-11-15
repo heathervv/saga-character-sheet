@@ -3,7 +3,7 @@ import TextArea from '../elements/TextArea'
 import Number from '../elements/Number'
 import Checkbox from '../elements/Checkbox'
 import List from '../elements/List'
-import WithTooltip from '../elements/WithTooltip'
+import WithTooltip, { Direction } from '../elements/WithTooltip'
 
 const BASE_KEY = 'character_'
 
@@ -25,15 +25,23 @@ const Character = () => (
                     <Text id={`${BASE_KEY}hp_max`} label="Max HP" />
                 </div>
                 <div className="flex flex-col grow gap-2">
-                    <Number id={`${BASE_KEY}buffers_current`} label="Current Buffers" tooltip="You can regain one buffer on a night's rest, but cannot use this ability again until you have all of your buffers back." />
+                    <Number
+                        id={`${BASE_KEY}buffers_current`}
+                        label="Current Buffers"
+                        tooltip="Reduces the severity of an injury. You can use multiple buﬀers at once to further reduce the severity of an injury. A single injury buﬀer is regained after a week's rest."
+                    />
                     <Number id={`${BASE_KEY}buffers_max`} label="Total Buffers" />
                 </div>
                 <div className="flex flex-col grow">
                     <Number id={`${BASE_KEY}energy`} label="Energy" />
+                    <Number id={`${BASE_KEY}attack`} label="Attack Strength" />
+                </div>
+                <div className="flex flex-col grow">
                     <Checkbox
                         id={`${BASE_KEY}swing`}
                         label="Swing"
                         tooltip="Choose to swing a roll in your favour. The ability is regained when the guide uses it against you."
+                        tooltipPlacement={Direction.Left}
                     />
                 </div>
             </div>
@@ -68,9 +76,16 @@ const Character = () => (
                     {/* THERE IS A TEMPORARY MIGRATION AT PLAY HERE (in ContentManager) */}
                     {/* {BASE_KEY}rapport translated into {BASE_KEY}rapport_list */}
                     {/* Safe to remove by Dec 1, 2026 */}
-                    <WithTooltip text="Allows you to ascend dice on a collective action.">
+                    <div className="hidden lg:block">
+                        <WithTooltip text="Allows you to ascend dice on a collective action." direction={Direction.Left}>
+                            <p className="text-sm inline-block">Rapport</p>
+                        </WithTooltip>
+                    </div>
+                    <div className="block lg:hidden">
+                        <WithTooltip text="Allows you to ascend dice on a collective action." direction={Direction.Right}>
                         <p className="text-sm inline-block">Rapport</p>
                     </WithTooltip>
+                    </div>
                     <List id={`${BASE_KEY}rapport_list`} type="rapport" full />
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import List from "../elements/List"
 import Number from "../elements/Number"
 import Text from "../elements/Text"
-import WithTooltip from "../elements/WithTooltip"
+import WithTooltip, { Direction } from "../elements/WithTooltip"
 
 const BASE_KEY = 'higher_power_'
 
@@ -14,7 +14,7 @@ const HigherPower = () => (
         </section>
         <hr className="mt-4 mb-4 border-base-content/10" />
         <section>
-            <WithTooltip text="Once per weeks rest you may ask for one miracle from your higher power source, which will be provided if it's a reasonable request aligned with their ideals, and will replenish on a week's rest if your deity is pleased with you.">
+            <WithTooltip direction={Direction.Right} text="Once per weeks rest you may ask for one miracle from your higher power source, which will be provided if it's a reasonable request aligned with their ideals, and will replenish on a week's rest if your deity is pleased with you.">
                 <p className="text-lg font-bold inline-block mb-2">Miracles</p>
             </WithTooltip>
             <List id={`${BASE_KEY}miracles`} type="miracle" />
@@ -28,6 +28,7 @@ const HigherPower = () => (
                         id={`${BASE_KEY}available_dice`}
                         label="Available Dice"
                         tooltip="Dice can be reused until they decay. If your decay is 2, rolling a 2 will cause the dice to drop from the pool until the pool is restored. Dice pools will recover after a week’s rest."
+                        tooltipPlacement={Direction.Right}
                     />
                     <Number id={`${BASE_KEY}total_die_pool`} label="Total Die Pool" />
                 </div>
